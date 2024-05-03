@@ -1064,7 +1064,7 @@
             <summary>
             It is possible for applications to bundle a fixed version of the runtime, and ship it side-by-side.
             For this you need to tell MSAL (so it can tell WebView2) where to find the runtime bits by setting this property. If you don't set it, MSAL will attempt to use a system-wide "evergreen" installation of the runtime."
-            For more details see: https://docs.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2environment.createasync?view=webview2-dotnet-1.0.705.50
+            For more details see <see href="https://learn.microsoft.com/dotnet/api/microsoft.web.webview2.core.corewebview2environment.createasync?view=webview2-dotnet-1.0.705.50">CoreWebView2Environment.CreateAsync Method</see>.
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Client.ApiConfig.Parameters.AbstractAcquireTokenConfidentialClientParameters">
@@ -1307,7 +1307,7 @@
             Display a custom text in the broker UI controls which support it. 
             </summary>
             <remarks>
-            Currently only the WAM account picker allows for this customization, see <see href="https://docs.microsoft.com/en-us/windows/uwp/security/web-account-manager#add-a-custom-header">WAM documentation</see>.
+            Currently only the WAM account picker allows for this customization, see <see href="https://learn.microsoft.com/windows/uwp/security/web-account-manager#add-a-custom-header">WAM documentation</see>.
             </remarks>
         </member>
         <member name="T:Microsoft.Identity.Client.AadAuthorityAudience">
@@ -2342,7 +2342,7 @@
             "TryAutoDetect" and MSAL.NET will attempt to auto-detect the region. 
             </summary>
             <remarks>
-            Region names as per https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.resourcemanager.fluent.core.region?view=azure-dotnet.
+            Region names as per <see href="https://learn.microsoft.com/dotnet/api/microsoft.azure.management.resourcemanager.fluent.core.region?view=azure-dotnet-legacy">Region class documentation</see>.
             Not all auth flows can use the regional token service. 
             Service To Service (client credential flow) tokens can be obtained from the regional service.
             Requires configuration at the tenant level.
@@ -3422,8 +3422,8 @@
         <member name="P:Microsoft.Identity.Client.AuthScheme.PoP.IPoPCryptoProvider.CryptographicAlgorithm">
             <summary>
             Algorithm used to sign proof of possession request. 
-            See https://docs.microsoft.com/en-us/azure/key-vault/keys/about-keys#signverify for ECD
-            See https://docs.microsoft.com/en-us/azure/key-vault/keys/about-keys#signverify-1 for RSA
+            See <see href="https://learn.microsoft.com/azure/key-vault/keys/about-keys-details#signverify">EC algorithms</see> for ECD.
+            See <see href="https://learn.microsoft.com/azure/key-vault/keys/about-keys-details#signverify-1">RSA algorithms</see> for RSA.
             </summary>
         </member>
         <member name="M:Microsoft.Identity.Client.AuthScheme.PoP.IPoPCryptoProvider.Sign(System.Byte[])">
@@ -4627,7 +4627,7 @@
              will redirect to it.
              </param>
              <param name="cancellationToken">The cancellation token to which you should respond to.
-             See https://docs.microsoft.com/en-us/dotnet/standard/parallel-programming/task-cancellation for details.
+             See <see href="https://learn.microsoft.com/dotnet/standard/parallel-programming/task-cancellation">Task cancellation</see> for details.
              </param>
              <returns> The URI returned back from the STS authorization endpoint. This URI contains a code=CODE
              parameters that MSAL.NET will extract and redeem.
@@ -6473,7 +6473,10 @@
             <param name="errorMessage">Error message to be set.</param>
         </member>
         <member name="M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicket.ToString">
-            <inheritdoc/>
+            <summary>
+            Creates a string representation of the data captured in the Kerberos supplemental ticket.
+            </summary>
+            <returns>A string containing the realm, service principal name, client name, and key type.</returns>
         </member>
         <member name="T:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager">
             <summary>
@@ -6488,26 +6491,8 @@
             <returns>A <see cref="T:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicket"/> object if a Kerberos Ticket Claim exists in the given
             idToken parameter and is parsed correctly. Null, otherwise.</returns>
         </member>
-        <member name="M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager.SaveToWindowsTicketCache(Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicket)">
-            <summary>
-            Save current Kerberos Ticket to current user's Ticket Cache.
-            </summary>
-            <param name="ticket">Kerberos ticket object to save.</param>
-            <remarks>Can throws <see cref="T:System.ArgumentException"/> when given ticket parameter is not a valid Kerberos Supplemental Ticket.
-            Can throws <see cref="T:System.ComponentModel.Win32Exception"/> if error occurs while saving ticket information into Ticket Cache.
-            </remarks>
-        </member>
-        <member name="M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager.SaveToWindowsTicketCache(Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicket,System.Int64)">
-            <summary>
-            Save current Kerberos Ticket to current user's Ticket Cache. Windows only.
-            </summary>
-            <param name="ticket">Kerberos ticket object to save.</param>
-            <param name="logonId">The Logon Id of the user owning the ticket cache.
-            The default of 0 represents the currently logged on user.</param>
-            <remarks>Can throw <see cref="T:System.ArgumentException"/> when given ticket parameter is not a valid Kerberos Supplemental Ticket.
-            Can throw <see cref="T:System.ComponentModel.Win32Exception"/> if error occurs while saving ticket information into Ticket Cache.
-            </remarks>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager.SaveToWindowsTicketCache(Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicket)" -->
+        <!-- Badly formed XML comment ignored for member "M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager.SaveToWindowsTicketCache(Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicket,System.Int64)" -->
         <member name="M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager.GetKerberosTicketFromWindowsTicketCache(System.String)">
             <summary>
             Reads a Kerberos Service Ticket associated with given service principal name from
@@ -6516,7 +6501,7 @@
             <param name="servicePrincipalName">Service principal name to find associated Kerberos Ticket.</param>
             <returns>Byte stream of searched Kerberos Ticket information if exists. Null, otherwise.</returns>
             <remarks>
-            Can throws <see cref="T:System.ComponentModel.Win32Exception"/> if error occurs while searching ticket information from Ticket Cache.
+            Throws <see cref="T:System.ComponentModel.Win32Exception"/> if error occurs while searching ticket information from Ticket Cache.
             </remarks>
         </member>
         <member name="M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager.GetKerberosTicketFromWindowsTicketCache(System.String,System.Int64)">
@@ -6529,7 +6514,7 @@
             The default of 0 represents the currently logged on user.</param>
             <returns>Byte stream of searched Kerberos Ticket information if exists. Null, otherwise.</returns>
             <remarks>
-            Can throws <see cref="T:System.ComponentModel.Win32Exception"/> if error occurs while searching ticket information from Ticket Cache.
+            Throws <see cref="T:System.ComponentModel.Win32Exception"/> if error occurs while searching ticket information from Ticket Cache.
             </remarks>
         </member>
         <member name="M:Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicketManager.GetKrbCred(Microsoft.Identity.Client.Kerberos.KerberosSupplementalTicket)">
@@ -6793,7 +6778,7 @@
         <member name="T:Microsoft.Identity.Client.TokenCacheNotificationArgs">
             <summary>
             Contains parameters used by the MSAL call accessing the cache.
-            See also <see cref="T:ITokenCacheSerializer"/> which contains methods
+            See also <see cref="T:Microsoft.Identity.Client.ITokenCacheSerializer"/> which contains methods
             to customize the cache serialization.
             For more details about the token cache see https://aka.ms/msal-net-web-token-cache
             </summary>
@@ -7637,7 +7622,9 @@
             </summary>
         </member>
         <member name="M:Microsoft.Identity.Client.TokenCache.SetIosKeychainSecurityGroup(System.String)">
-            <inheritdoc/>
+            <summary>
+            Sets the security group to be used with the iOS Keychain. This function should not be used by external customers. It <see href="https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/2121">will be removed</see> in a future version of MSAL.
+            </summary>
         </member>
         <member name="M:Microsoft.Identity.Client.TokenCache.DeleteAccessTokensWithIntersectingScopes(Microsoft.Identity.Client.Internal.Requests.AuthenticationRequestParameters,System.Collections.Generic.IEnumerable{System.String},System.String,System.Collections.Generic.HashSet{System.String},System.String,System.String)">
             <summary>
@@ -7832,8 +7819,8 @@
             <summary>
             Standard OAuth2 protocol error code. It indicates that the application needs to expose the UI to the user
             so that the user does an interactive action in order to get a new token.
-            <para>Mitigation:</para> If your application is a <see cref="T:IPublicClientApplication"/> call <c>AcquireTokenInteractive</c>
-            perform an interactive authentication. If your application is a <see cref="T:ConfidentialClientApplication"/> chances are that the Claims member
+            <para>Mitigation:</para> If your application is a <see cref="T:Microsoft.Identity.Client.IPublicClientApplication"/> call <c>AcquireTokenInteractive</c>
+            perform an interactive authentication. If your application is a <see cref="T:Microsoft.Identity.Client.ConfidentialClientApplication"/> chances are that the Claims member
             of the exception is not empty. See <see cref="P:MsalServiceException.Claims"/> for the right mitigation
             </summary>
         </member>
@@ -7841,9 +7828,9 @@
             <summary>
             Standard OAuth2 protocol error code. It indicates that the application needs to expose the UI to the user
             so the user can do an interactive log-in to get a token with updated claims.
-            <para>Mitigation:</para> If your application is a <see cref="T:IPublicClientApplication"/> call <c>AcquireTokenInteractive</c>
-            perform an interactive authentication. If your application is a <see cref="T:ConfidentialClientApplication"/> chances are that the Claims member
-            of the exception is not empty. See <see cref="P:MsalServiceException.Claims"/> for the right mitigation
+            <para>Mitigation:</para> If your application is a <see cref="T:Microsoft.Identity.Client.IPublicClientApplication"/> call <c>AcquireTokenInteractive</c>
+            perform an interactive authentication. If your application is a <see cref="T:Microsoft.Identity.Client.ConfidentialClientApplication"/> chances are that the Claims member
+            of the exception is not empty. See <see cref="P:Microsoft.Identity.Client.MsalServiceException.Claims"/> for the right mitigation
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.MsalError.NoTokensFoundError">
@@ -7944,7 +7931,7 @@
         <member name="F:Microsoft.Identity.Client.MsalError.UpnRequired">
             <summary>
             loginHint should be a UPN
-            <para>What happens?</para> An override of a token acquisition operation was called in <see cref="T:IPublicClientApplication"/> which
+            <para>What happens?</para> An override of a token acquisition operation was called in <see cref="T:Microsoft.Identity.Client.IPublicClientApplication"/> which
             takes a <c>loginHint</c> as a parameters, but this login hint was not using the UserPrincipalName (UPN) format, e.g. <c>john.doe@contoso.com</c>
             expected by the service
             <para>Remediation</para> Make sure in your code that you enforce <c>loginHint</c> to be a UPN
@@ -8752,8 +8739,8 @@
         <member name="F:Microsoft.Identity.Client.MsalError.WebView2NotInstalled">
             <summary>
             <para>What happens?</para>The embedded browser cannot be started because a runtime component is missing.
-            <para>Mitigation</para>"The embedded browser needs WebView2 runtime to be installed. An end user of the app can download and install the WebView2 runtime from https://go.microsoft.com/fwlink/p/?LinkId=2124703 and restart the app.
-             or the app developer can install the WebView2 runtime https://docs.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution
+            <para>Mitigation</para>The embedded browser needs WebView2 runtime to be installed. An end user of the app can download and install the WebView2 runtime from https://go.microsoft.com/fwlink/p/?LinkId=2124703 and restart the app.
+             The app developer can <see href="https://learn.microsoft.com/microsoft-edge/webview2/concepts/distribution">get the distributable version of the WebView2 runtime</see>.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.MsalError.WebView2LoaderNotFound">
@@ -9161,8 +9148,7 @@
         <member name="P:Microsoft.Identity.Client.MsalServiceException.StatusCode">
             <summary>
             Gets the status code returned from HTTP layer. This status code is either the <c>HttpStatusCode</c> in the inner
-            <see cref="T:System.Net.Http.HttpRequestException"/> response or the NavigateError Event Status Code in a browser based flow (See
-            http://msdn.microsoft.com/en-us/library/bb268233(v=vs.85).aspx).
+            <see cref="T:System.Net.Http.HttpRequestException"/> response or the NavigateError Event Status Code in a browser based flow (see <see href="https://learn.microsoft.com/previous-versions/bb268233(v=vs.85)">NavigateError Event Status Codes</see>).
             You can use this code for purposes such as implementing retry logic or error investigation.
             </summary>
         </member>
@@ -9781,24 +9767,24 @@
             framework-based Modern Authentication by default. Starting with build 16.0.7967, Microsoft 365 apps use 
             Web Account Manager (WAM) for sign-in workflows on Windows builds that are later than 15000 
             (Windows 10, version 1703, build 15063.138).
-            https://docs.microsoft.com/en-us/office365/troubleshoot/administration/disabling-adal-wam-not-recommended
+            https://learn.microsoft.com/microsoft-365/troubleshoot/administration/disabling-adal-wam-not-recommended
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.PlatformsCommon.Shared.Win32VersionApi.Windows2019BuildNumber">
             <summary>
             Windows Server 2019 (version 1809, Build Number 17763)
             Editions : Datacenter, Essentials, Standard
-            https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info
+            https://learn.microsoft.com/windows-server/get-started/windows-server-release-info
             For MultiSession Window 10 Build Number is same as Windows 2019 Server Build Number
             MultiSession Windows 10 is supported from Windows 10 multi-session, version 1903
-            https://docs.microsoft.com/en-us/mem/intune/fundamentals/azure-virtual-desktop-multi-session
+            https://learn.microsoft.com/mem/intune/fundamentals/azure-virtual-desktop-multi-session
             </summary>
         </member>
         <member name="M:Microsoft.Identity.Client.PlatformsCommon.Shared.Win32VersionApi.RtlGetVersion(Microsoft.Identity.Client.PlatformsCommon.Shared.Win32VersionApi.OSVERSIONINFOEXW@)">
             <summary>
             RtlGetVersion is the kernel-mode equivalent of the user-mode GetVersionEx function in the Windows SDK
             The RtlGetVersion routine returns version information about the currently running operating system.
-            https://docs.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-rtlgetversion
+            https://learn.microsoft.com/windows-hardware/drivers/ddi/wdm/nf-wdm-rtlgetversion
             When using RtlGetVersion to determine whether a particular version of the operating system is running, 
             a caller should check for version numbers that are greater than or equal to the required version number. 
             This ensures that a version test succeeds for later versions of Windows.
@@ -10178,60 +10164,60 @@
         <member name="T:Microsoft.Identity.Client.UiRequiredExceptionClassification">
             <summary>
             Details about the cause of an <see cref="T:Microsoft.Identity.Client.MsalUiRequiredException"/>, giving a hint about what the user can expect when 
-            they go through interactive authentication. See https://aka.ms/msal-net-UiRequiredException for details.
+            they go through interactive authentication. See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.None">
             <summary>
-            No further details are provided. It is possible that the user will be able to resolve the issue by launching interactive authentication.
-            See https://aka.ms/msal-net-UiRequiredException for details
+            No details are provided. It is possible that the user will be able to resolve the issue by launching interactive authentication.
+            This is also the classification when no account or valid login hint is passed to <see cref="T:Microsoft.Identity.Client.AcquireTokenSilentParameterBuilder"/>.
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
-            <remarks>This is also the classification when no account or valid login hint is passed to AcquireTokenSilent</remarks>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.MessageOnly">
             <summary>
-            Issue cannot be resolved at this time. Launching interactive authentication flow will show a message explaining the condition.
-            See https://aka.ms/msal-net-UiRequiredException for details
+            Issue cannot be resolved. Launching interactive authentication flow will show a message explaining the condition.
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.BasicAction">
             <summary>
             Issue can be resolved by user interaction during the interactive authentication flow.
-            See https://aka.ms/msal-net-UiRequiredException for details
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.AdditionalAction">
             <summary>
-            Issue can be resolved by additional remedial interaction with the system, outside of the interactive authentication flow.
-            Starting an interactive authentication flow will show the user what they need to do, but it is possible that the user is unable to complete the action.
-            See https://aka.ms/msal-net-UiRequiredException for details
+            Issue can be resolved by additional remedial interaction within the system, outside of the interactive authentication flow.
+            Starting an interactive authentication flow will show the user what they need to do but it is possible that the user will be unable to complete the action.
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.ConsentRequired">
             <summary>
-            User consent is missing, or has been revoked. Issue can be resolved by user consenting during the interactive authentication flow.
-            See https://aka.ms/msal-net-UiRequiredException for details
+            User consent is missing or has been revoked. Issue can be resolved by user consenting during the interactive authentication flow.
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.UserPasswordExpired">
             <summary>
             User's password has expired. Issue can be resolved by user during the interactive authentication flow.
-            See https://aka.ms/msal-net-UiRequiredException for details.
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.PromptNeverFailed">
             <summary>
-            <see cref="M:Microsoft.Identity.Client.AcquireTokenInteractiveParameterBuilder.WithPrompt(Microsoft.Identity.Client.Prompt)"/> was used with Prompt.Never value, 
-            however this could not be honored by the server. Please use a different prompt behavior, such as <see cref="F:Microsoft.Identity.Client.Prompt.SelectAccount"/>
-            See https://aka.ms/msal-net-UiRequiredException for details.
+            <see cref="M:Microsoft.Identity.Client.AcquireTokenInteractiveParameterBuilder.WithPrompt(Microsoft.Identity.Client.Prompt)"/> was used with a <c>Prompt.Never</c> value, 
+            however this could not be honored by the server. Please use a different prompt behavior, such as <see cref="F:Microsoft.Identity.Client.Prompt.SelectAccount"/>.
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="F:Microsoft.Identity.Client.UiRequiredExceptionClassification.AcquireTokenSilentFailed">
             <summary>
-            An <c>AcquireTokenSilent</c> call failed. This is usually part of the pattern 
-            of calling <c>AcquireTokenSilent</c> for getting a token from the cache, followed by an a different
-            <c>AcquireToken</c> call for getting a token from AAD. See the error message for details. 
-            See https://aka.ms/msal-net-UiRequiredException for details.
+            An <see cref="T:Microsoft.Identity.Client.AcquireTokenSilentParameterBuilder"/> call failed. This is usually part of the pattern 
+            of calling <see cref="T:Microsoft.Identity.Client.AcquireTokenSilentParameterBuilder"/> for getting a token from the cache, followed by an a different
+            <c>AcquireToken</c> call for getting a token from Microsoft Entra ID. See the error message for details. 
+            See <see href="https://aka.ms/msal-net-UiRequiredException">Understanding MsalUiRequiredException</see> for details.
             </summary>
         </member>
         <member name="P:Microsoft.Identity.Client.UI.AuthorizationResult.State">
@@ -10787,7 +10773,7 @@
         </member>
         <member name="P:Microsoft.Identity.Client.WwwAuthenticateParameters.Item(System.String)">
             <summary>
-            Return the <see cref="P:Microsoft.Identity.Client.WwwAuthenticateParameters.RawParameters"/> of key <paramref name="key"/>.
+            Return the <c>RawParameters</c> of key <paramref name="key"/>.
             </summary>
             <param name="key">Name of the raw parameter to retrieve.</param>
             <returns>The raw parameter if it exists,
@@ -11218,14 +11204,14 @@
             <summary>
             Flags that specify the attributes required by the AcceptSecurityContext (CredSSP) function
             for a server to establish the context.
-            https://docs.microsoft.com/en-us/windows/win32/api/sspi/nf-sspi-acceptsecuritycontext
+            https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-acceptsecuritycontext
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.ContextStatus">
             <summary>
             Result of AcceptSecurityContext (CredSSP) function call which  lets the server component of a transport application
             establish a security context between the server and a remote client. 
-            https://docs.microsoft.com/en-us/windows/win32/api/sspi/nf-sspi-acceptsecuritycontext
+            https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-acceptsecuritycontext
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.Credential">
@@ -11265,13 +11251,13 @@
         <member name="T:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.InitContextFlag">
             <summary>
             Bit flags that indicate requests for the context for InitializeSecurityContext API call.
-            https://docs.microsoft.com/en-us/windows/win32/api/sspi/nf-sspi-initializesecuritycontexta
+            https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-initializesecuritycontexta
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.SecStatus">
             <summary>
             Status code returned from SSPI functions.
-            https://docs.microsoft.com/en-us/windows/win32/api/sspi/nf-sspi-initializesecuritycontexta
+            https://learn.microsoft.com/windows/win32/api/sspi/nf-sspi-initializesecuritycontexta
             </summary>
         </member>
         <member name="T:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.TicketCacheReader">
@@ -11284,21 +11270,23 @@
             Creates a <see cref="T:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.TicketCacheReader"/> object to read a Kerberos Ticket from Ticket Cache.
             </summary>
             <param name="spn">Service principal name of ticket to read out from Ticket Cache.</param>
-            <param name="logonId">The Logon Id of the user owning the ticket cache.
-            The default of 0 represents the currently logged on user.</param>
-            <param name="package">The name of the LSA authentication package that will be interacted with.</param>
+            <param name="logonId">The Logon ID of the user owning the ticket cache.
+            The default of 0 represents the currently logged in user.</param>
+            <param name="package">The name of the <see href="https://learn.microsoft.com/windows/win32/secauthn/lsa-authentication">Local Security Authority (LSA)</see> authentication package that will be interacted with.</param>
         </member>
         <member name="M:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.TicketCacheReader.RequestToken">
             <summary>
             Read out a Kerberos Ticket.
             </summary>
-            <returns>Byte stream of Kerberos Ticket if exists. Null otherwise.</returns>
+            <returns>Byte stream of Kerberos Ticket, if exists. Null otherwise.</returns>
             <remarks>
-            Can throws <see cref="T:System.ComponentModel.Win32Exception"/> if any error occurs while interfacing with Ticket Cache.
+            Throws <see cref="T:System.ComponentModel.Win32Exception"/> if any error occurs while interfacing with Ticket Cache.
             </remarks>
         </member>
         <member name="M:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.TicketCacheReader.Dispose(System.Boolean)">
-            <inheritdoc/>
+            <summary>
+            Clean up all data members used for interaction with Ticket Cache.
+            </summary>
         </member>
         <member name="M:Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos.TicketCacheReader.Dispose">
             <summary>

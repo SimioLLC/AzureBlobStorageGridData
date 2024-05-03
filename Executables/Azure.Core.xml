@@ -2739,6 +2739,17 @@
             <summary>
             An <see cref="T:Azure.Core.Pipeline.HttpPipelineTransport" /> implementation that uses <see cref="T:System.Net.Http.HttpClient" /> as the transport.
             </summary>
+            <summary>
+            An <see cref="T:Azure.Core.Pipeline.HttpPipelineTransport" /> implementation that uses <see cref="T:System.Net.Http.HttpClient" /> as the transport.
+            </summary>
+            <summary>
+            An <see cref="T:Azure.Core.Pipeline.HttpPipelineTransport" /> implementation that uses <see cref="T:System.Net.Http.HttpClient" /> as the transport.
+            </summary>
+        </member>
+        <member name="F:Azure.Core.Pipeline.HttpClientTransport.Shared">
+            <summary>
+            A shared instance of <see cref="T:Azure.Core.Pipeline.HttpClientTransport" /> with default parameters.
+            </summary>
         </member>
         <member name="M:Azure.Core.Pipeline.HttpClientTransport.#ctor">
             <summary>
@@ -2762,11 +2773,6 @@
             Creates a new instance of <see cref="T:Azure.Core.Pipeline.HttpClientTransport" /> using the provided client instance.
             </summary>
             <param name="client">The instance of <see cref="T:System.Net.Http.HttpClient" /> to use.</param>
-        </member>
-        <member name="F:Azure.Core.Pipeline.HttpClientTransport.Shared">
-            <summary>
-            A shared instance of <see cref="T:Azure.Core.Pipeline.HttpClientTransport" /> with default parameters.
-            </summary>
         </member>
         <member name="M:Azure.Core.Pipeline.HttpClientTransport.CreateRequest">
             <summary>
@@ -2900,17 +2906,17 @@
         </member>
         <member name="M:Azure.Core.Pipeline.HttpPipelineBuilder.Build(Azure.Core.ClientOptions,Azure.Core.Pipeline.HttpPipelinePolicy[])">
             <summary>
-            Creates an instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /> populated with default policies, customer provided policies from <paramref name="options" /> and client provided per call policies.
+            Creates an instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /> populated with default policies, user-provided policies from <paramref name="options" /> and client provided per call policies.
             </summary>
-            <param name="options">The customer provided client options object.</param>
+            <param name="options">The user-provided client options object.</param>
             <param name="perRetryPolicies">Client provided per-retry policies.</param>
             <returns>A new instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /></returns>
         </member>
         <member name="M:Azure.Core.Pipeline.HttpPipelineBuilder.Build(Azure.Core.ClientOptions,Azure.Core.Pipeline.HttpPipelinePolicy[],Azure.Core.Pipeline.HttpPipelinePolicy[],Azure.Core.ResponseClassifier)">
             <summary>
-            Creates an instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /> populated with default policies, customer provided policies from <paramref name="options" /> and client provided per call policies.
+            Creates an instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /> populated with default policies, user-provided policies from <paramref name="options" /> and client provided per call policies.
             </summary>
-            <param name="options">The customer provided client options object.</param>
+            <param name="options">The user-provided client options object.</param>
             <param name="perCallPolicies">Client provided per-call policies.</param>
             <param name="perRetryPolicies">Client provided per-retry policies.</param>
             <param name="responseClassifier">The client provided response classifier.</param>
@@ -2918,28 +2924,28 @@
         </member>
         <member name="M:Azure.Core.Pipeline.HttpPipelineBuilder.Build(Azure.Core.ClientOptions,Azure.Core.Pipeline.HttpPipelinePolicy[],Azure.Core.Pipeline.HttpPipelinePolicy[],Azure.Core.Pipeline.HttpPipelineTransportOptions,Azure.Core.ResponseClassifier)">
             <summary>
-            Creates an instance of <see cref="T:Azure.Core.Pipeline.DisposableHttpPipeline" /> populated with default policies, customer provided policies from <paramref name="options" />, client provided per call policies, and the supplied <see cref="T:Azure.Core.Pipeline.HttpPipelineTransportOptions" />.
+            Creates an instance of <see cref="T:Azure.Core.Pipeline.DisposableHttpPipeline" /> populated with default policies, user-provided policies from <paramref name="options" />, client provided per call policies, and the supplied <see cref="T:Azure.Core.Pipeline.HttpPipelineTransportOptions" />.
             </summary>
-            <param name="options">The customer provided client options object.</param>
+            <param name="options">The user-provided client options object.</param>
             <param name="perCallPolicies">Client provided per-call policies.</param>
             <param name="perRetryPolicies">Client provided per-retry policies.</param>
-            <param name="transportOptions">The customer provided transport options which will be applied to the default transport. Note: If a custom transport has been supplied via the <paramref name="options" />, these <paramref name="transportOptions" /> will be ignored.</param>
+            <param name="transportOptions">The user-provided transport options which will be applied to the default transport. Note: If a custom transport has been supplied via the <paramref name="options" />, these <paramref name="transportOptions" /> will be ignored.</param>
             <param name="responseClassifier">The client provided response classifier.</param>
             <returns>A new instance of <see cref="T:Azure.Core.Pipeline.DisposableHttpPipeline" /></returns>
         </member>
         <member name="M:Azure.Core.Pipeline.HttpPipelineBuilder.Build(Azure.Core.Pipeline.HttpPipelineOptions)">
             <summary>
-            Creates an instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /> populated with default policies, customer provided policies from <paramref name="options" /> and client provided per call policies.
+            Creates an instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /> populated with default policies, user-provided policies from <paramref name="options" /> and client provided per call policies.
             </summary>
             <param name="options">The configuration options used to build the <see cref="T:Azure.Core.Pipeline.HttpPipeline" /></param>
             <returns>A new instance of <see cref="T:Azure.Core.Pipeline.HttpPipeline" /></returns>
         </member>
         <member name="M:Azure.Core.Pipeline.HttpPipelineBuilder.Build(Azure.Core.Pipeline.HttpPipelineOptions,Azure.Core.Pipeline.HttpPipelineTransportOptions)">
             <summary>
-            Creates an instance of <see cref="T:Azure.Core.Pipeline.DisposableHttpPipeline" /> populated with default policies, customer provided policies from <paramref name="options" />, client provided per call policies, and the supplied <see cref="T:Azure.Core.Pipeline.HttpPipelineTransportOptions" />.
+            Creates an instance of <see cref="T:Azure.Core.Pipeline.DisposableHttpPipeline" /> populated with default policies, user-provided policies from <paramref name="options" />, client provided per call policies, and the supplied <see cref="T:Azure.Core.Pipeline.HttpPipelineTransportOptions" />.
             </summary>
             <param name="options">The configuration options used to build the <see cref="T:Azure.Core.Pipeline.DisposableHttpPipeline" /></param>
-            <param name="transportOptions">The customer provided transport options which will be applied to the default transport. Note: If a custom transport has been supplied via the <paramref name="options" />, these <paramref name="transportOptions" /> will be ignored.</param>
+            <param name="transportOptions">The user-provided transport options which will be applied to the default transport. Note: If a custom transport has been supplied via the <paramref name="options" />, these <paramref name="transportOptions" /> will be ignored.</param>
             <returns>A new instance of <see cref="T:Azure.Core.Pipeline.DisposableHttpPipeline" /></returns>
         </member>
         <member name="T:Azure.Core.Pipeline.HttpPipelineOptions">
@@ -3111,6 +3117,12 @@
             </value>
         </member>
         <member name="T:Azure.Core.Pipeline.HttpWebRequestTransport">
+            <summary>
+            The <see cref="T:System.Net.HttpWebRequest" /> based <see cref="T:Azure.Core.Pipeline.HttpPipelineTransport" /> implementation.
+            </summary>
+            <summary>
+            The <see cref="T:System.Net.HttpWebRequest" /> based <see cref="T:Azure.Core.Pipeline.HttpPipelineTransport" /> implementation.
+            </summary>
             <summary>
             The <see cref="T:System.Net.HttpWebRequest" /> based <see cref="T:Azure.Core.Pipeline.HttpPipelineTransport" /> implementation.
             </summary>
@@ -3359,7 +3371,7 @@
              The default value could change in the future, the flag should be only set to false if suppression for the client
              should never be enabled.</param>
         </member>
-        <member name="M:Azure.Core.Pipeline.DiagnosticScope.AddLink(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+        <member name="M:Azure.Core.Pipeline.DiagnosticScope.AddLink(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
             <summary>
             Adds a link to the scope. This must be called before <see cref="M:Azure.Core.Pipeline.DiagnosticScope.Start" /> has been called for the DiagnosticScope.
             </summary>
@@ -3681,6 +3693,9 @@
             <summary>
             Parses the error details from the provided <see cref="T:Azure.Response" />.
             </summary>
+            <remarks>
+            In various scenarios, parsers may be called for successful responses. Implementations should not populate <paramref name="error" /> or <paramref name="data" /> with sensitive information, as these values may be logged as part of the exception.
+            </remarks>
             <param name="response">The <see cref="T:Azure.Response" /> to parse. The <see cref="P:Azure.Response.ContentStream" /> will already be buffered.</param>
             <param name="error">The <see cref="T:Azure.ResponseError" /> describing the parsed error details.</param>
             <param name="data">Data to be applied to the <see cref="P:System.Exception.Data" /> property.</param>
@@ -3695,6 +3710,7 @@
             <summary>
             Gets an ID representing the operation that can be used to poll for
             the status of the long-running operation.
+            There are cases that operation id is not available, we return "NOT_SET" for unavailable operation id.
             </summary>
         </member>
         <member name="T:Azure.Core.Request">
@@ -6764,6 +6780,42 @@
             Represents a long-running operation.
             </summary>
         </member>
+        <member name="M:Azure.Operation.Rehydrate``1(Azure.Core.Pipeline.HttpPipeline,Azure.Core.RehydrationToken,Azure.Core.ClientOptions)">
+            <summary>
+            Rehydrates an operation from a <see cref="T:Azure.Core.RehydrationToken" />.
+            </summary>
+            <param name="pipeline">The Http pipeline.</param>
+            <param name="rehydrationToken">The rehydration token.</param>
+            <param name="options">The client options.</param>
+            <returns>The long-running operation.</returns>
+        </member>
+        <member name="M:Azure.Operation.Rehydrate(Azure.Core.Pipeline.HttpPipeline,Azure.Core.RehydrationToken,Azure.Core.ClientOptions)">
+            <summary>
+            Rehydrates an operation from a <see cref="T:Azure.Core.RehydrationToken" />.
+            </summary>
+            <param name="pipeline">The Http pipeline.</param>
+            <param name="rehydrationToken">The rehydration token.</param>
+            <param name="options">The client options.</param>
+            <returns>The long-running operation.</returns>
+        </member>
+        <member name="M:Azure.Operation.RehydrateAsync``1(Azure.Core.Pipeline.HttpPipeline,Azure.Core.RehydrationToken,Azure.Core.ClientOptions)">
+            <summary>
+            Rehydrates an operation from a <see cref="T:Azure.Core.RehydrationToken" />.
+            </summary>
+            <param name="pipeline">The Http pipeline.</param>
+            <param name="rehydrationToken">The rehydration token.</param>
+            <param name="options">The client options.</param>
+            <returns>The long-running operation.</returns>
+        </member>
+        <member name="M:Azure.Operation.RehydrateAsync(Azure.Core.Pipeline.HttpPipeline,Azure.Core.RehydrationToken,Azure.Core.ClientOptions)">
+            <summary>
+            Rehydrates an operation from a <see cref="T:Azure.Core.RehydrationToken" />.
+            </summary>
+            <param name="pipeline">The Http pipeline.</param>
+            <param name="rehydrationToken">The rehydration token.</param>
+            <param name="options">The client options.</param>
+            <returns>The long-running operation.</returns>
+        </member>
         <member name="M:Azure.Operation.GetRehydrationToken">
             <summary>
             Get a token that can be used to rehydrate the operation.
@@ -6773,6 +6825,7 @@
             <summary>
             Gets an ID representing the operation that can be used to poll for
             the status of the long-running operation.
+            There are cases that operation id is not available, we return "NOT_SET" for unavailable operation id.
             </summary>
         </member>
         <member name="M:Azure.Operation.GetRawResponse">
@@ -7698,6 +7751,40 @@
             <summary>
             Indicates the method should return once the server operation has started.
             </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute">
+            <summary>
+             Indicates that an API is experimental and it may change in the future.
+            </summary>
+            <remarks>
+              This attribute allows call sites to be flagged with a diagnostic that indicates that an experimental
+              feature is used. Authors can use this attribute to ship preview features in their assemblies.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)">
+            <summary>
+             Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute" /> class, specifying the ID that the compiler will use
+             when reporting a use of the API the attribute applies to.
+            </summary>
+            <param name="diagnosticId">The ID that the compiler will use when reporting a use of the API the attribute applies to.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.DiagnosticId">
+            <summary>
+             Gets the ID that the compiler will use when reporting a use of the API the attribute applies to.
+            </summary>
+            <value>The unique diagnostic ID.</value>
+            <remarks>
+             The diagnostic ID is shown in build output for warnings and errors.
+             <para>This property represents the unique ID that can be used to suppress the warnings or errors, if needed.</para>
+            </remarks>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.UrlFormat">
+            <summary>
+             Gets or sets the URL for corresponding documentation.
+             The API accepts a format string instead of an actual URL, creating a generic URL that includes the diagnostic ID.
+            </summary>
+            <value>The format string that represents a URL to corresponding documentation.</value>
+            <remarks>An example format string is <c>https://contoso.com/obsoletion-warnings/{0}</c>.</remarks>
         </member>
         <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
             <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
