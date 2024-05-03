@@ -75,44 +75,25 @@ namespace AzureBlobStorageGridData
     </xsl:template>
 </xsl:stylesheet>";
             stylesheetProp.GetXML += StylesheetProp_GetXML;
-
-            var debugFileFolder = schema.PerTableProperties.AddFilesLocationProperty("DebugFileFolder");
-            debugFileFolder.DisplayName = "Debug File Folder";
-            debugFileFolder.Description = "Debug File Folder.";
-            debugFileFolder.DefaultValue = String.Empty;
-
-            var editXMLStylesheetInputFile = schema.PerTableProperties.AddFileProperty("EditXMLStylesheetInputFile");
-            editXMLStylesheetInputFile.DisplayName = "Edit XML Stylesheet Input File";
-            editXMLStylesheetInputFile.Description = "Edit XML Stylesheet Input File.";
-            editXMLStylesheetInputFile.DefaultValue = String.Empty;
         }
 
         private void StylesheetProp_GetXML(object sender, XSLTAddInPropertyGetXMLEventArgs e)
         {
-            string debugFileFolder = string.Empty;
             string stylesheet = string.Empty;
 
-            Importer.GetValues(e.HierarchicalProperties[0], e.OtherProperties, out var connectionString, out var containerName, out var blobName, out var messageType, ref debugFileFolder, ref stylesheet, out var editXMLStylesheetInputFile);
+            Importer.GetValues(e.HierarchicalProperties[0], e.OtherProperties, out var connectionString, out var containerName, out var blobName, out var messageType, ref stylesheet);
 
-            if (editXMLStylesheetInputFile != null && editXMLStylesheetInputFile.Length > 0)
+            Importer.GetData(connectionString, containerName, blobName, out var resultString);
+
+            if (messageType == "OTHER")
             {
-                e.XML = File.ReadAllText(editXMLStylesheetInputFile);
+                resultString = "<data><![CDATA[" + resultString.TrimEnd().Replace("\\", String.Empty) + "]]></data>";
             }
-            else
-            {   
-
-                Importer.GetData(connectionString, containerName, blobName, out var resultString);
-
-                if (messageType == "OTHER")
-                {
-                    resultString = "<data><![CDATA[" + resultString.TrimEnd().Replace("\\", String.Empty) + "]]></data>";
-                }
-                else if (messageType == "JSON")
-                {
-                    resultString = JsonConvert.DeserializeXmlNode(resultString).InnerXml;
-                }
-                e.XML = resultString;
+            else if (messageType == "JSON")
+            {
+                resultString = JsonConvert.DeserializeXmlNode(resultString).InnerXml;
             }
+            e.XML = resultString;            
         }
     }
 
@@ -124,10 +105,9 @@ namespace AzureBlobStorageGridData
 
         public OpenImportDataResult OpenData(IGridDataOpenImportDataContext openContext)
         {
-            string debugFileFolder = string.Empty;
             string stylesheet = string.Empty;
 
-            GetValues(openContext.Settings.Properties, openContext.Settings.GridDataSettings[openContext.TableName].Properties, out var connectionString, out var containerName, out var blobName, out var messageType, ref debugFileFolder, ref stylesheet, out var editXMLStylesheetInputFile);
+            GetValues(openContext.Settings.Properties, openContext.Settings.GridDataSettings[openContext.TableName].Properties, out var connectionString, out var containerName, out var blobName, out var messageType, ref stylesheet);
 
             if (String.IsNullOrWhiteSpace(connectionString))
                 return OpenImportDataResult.Failed("The Connection String parameter is not specified");
@@ -144,14 +124,6 @@ namespace AzureBlobStorageGridData
             if (GetData(connectionString, containerName, blobName, out var resultString) == false)
             {
                 throw new Exception(resultString);
-            }
-
-            if (debugFileFolder.Length > 0)
-            {
-                Console.WriteLine("\nSaving blob to\n\t{0}\n", debugFileFolder + "\\" + blobName);
-
-                File.WriteAllText(debugFileFolder + "\\" + blobName, resultString);
-
             }
 
             var mergedDataSet = new DataSet();
@@ -243,10 +215,9 @@ namespace AzureBlobStorageGridData
             if (context == null)
                 return null;
 
-            string debugFileFolder = string.Empty;
             string stylesheet = string.Empty;
 
-            GetValues(context.Settings.Properties, context.Settings.GridDataSettings[context.GridDataName].Properties, out var connectionString, out var containerName, out var blobName, out var messageType, ref debugFileFolder, ref stylesheet, out var editXMLStylesheetInputFile);
+            GetValues(context.Settings.Properties, context.Settings.GridDataSettings[context.GridDataName].Properties, out var connectionString, out var containerName, out var blobName, out var messageType, ref stylesheet);
 
             if (String.IsNullOrWhiteSpace(connectionString) || String.IsNullOrWhiteSpace(containerName) || String.IsNullOrWhiteSpace(blobName)) 
                 return null;
@@ -254,15 +225,13 @@ namespace AzureBlobStorageGridData
             return String.Format("Bound to Azure Blob Storage CSV: ConnectionString = {0}, Container Name = {1}, Blob Name = {2}", connectionString, containerName, blobName);
         }
 
-        internal static void GetValues(INamedSimioCollection<IAddInPropertyValue> overallSettings, INamedSimioCollection<IAddInPropertyValue> tableSettings, out string connectionString, out string containerName, out string blobName, out string messageType, ref string debugFileFolder, ref string stylesheet, out string editXMLStylesheetInputFile)
+        internal static void GetValues(INamedSimioCollection<IAddInPropertyValue> overallSettings, INamedSimioCollection<IAddInPropertyValue> tableSettings, out string connectionString, out string containerName, out string blobName, out string messageType, ref string stylesheet)
         {
             connectionString = (string)overallSettings?["ConnectionString"].Value;
             connectionString = TokenReplacement.ResolveString(connectionString, (string)overallSettings?["Password"]?.Value);
             containerName = (string)tableSettings?["ContainerName"].Value;
             blobName = (string)tableSettings?["BlobName"].Value;
             messageType = (string)tableSettings?["MessageType"].Value;
-            debugFileFolder = (string)tableSettings?["DebugFileFolder"].Value;
-            editXMLStylesheetInputFile = (string)tableSettings?["EditXMLStylesheetInputFile"].Value;
             stylesheet = (string)tableSettings?["Stylesheet"].Value;
         }
             
