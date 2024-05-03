@@ -208,7 +208,7 @@ namespace AzureBlobStorageGridData
             return new OpenImportDataResult()
             {
                 Result = GridDataOperationResult.Succeeded,
-                Records = new AzureBlobStorageCSVGridDataRecords(mergedDataSet)
+                Records = new AzureBlobStorageGridDataRecords(mergedDataSet)
             };
             
         }
@@ -293,11 +293,11 @@ namespace AzureBlobStorageGridData
         }
     }
 
-    class AzureBlobStorageCSVGridDataRecords : IGridDataRecords
+    class AzureBlobStorageGridDataRecords : IGridDataRecords
     {
         readonly DataSet _dataSet;
 
-        public AzureBlobStorageCSVGridDataRecords(DataSet dataSet)
+        public AzureBlobStorageGridDataRecords(DataSet dataSet)
         {
             _dataSet = dataSet;
         }
@@ -348,7 +348,7 @@ namespace AzureBlobStorageGridData
             {
                 foreach (DataRow dr in _dataSet.Tables[0].Rows)
                 {
-                    yield return new AzureBlobStorageCSVGridDataRecord(dr);
+                    yield return new AzureBlobStorageGridDataRecord(dr);
                 }
 
             }
@@ -375,10 +375,10 @@ namespace AzureBlobStorageGridData
 
     }
 
-    class AzureBlobStorageCSVGridDataRecord : IGridDataRecord
+    class AzureBlobStorageGridDataRecord : IGridDataRecord
     {
         private readonly DataRow _dr;
-        public AzureBlobStorageCSVGridDataRecord(DataRow dr)
+        public AzureBlobStorageGridDataRecord(DataRow dr)
         {
             _dr = dr;
         }
