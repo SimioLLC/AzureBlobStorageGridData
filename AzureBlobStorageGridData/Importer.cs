@@ -87,7 +87,7 @@ namespace AzureBlobStorageGridData
 
             if (messageType == "OTHER")
             {
-                resultString = "<data><![CDATA[" + resultString.TrimEnd().Replace("\\", String.Empty) + "]]></data>";
+                resultString = "<data><![CDATA[" + resultString.TrimEnd().Replace("\"", String.Empty) + "]]></data>";
             }
             else if (messageType == "JSON")
             {
